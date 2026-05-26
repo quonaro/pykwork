@@ -20,6 +20,10 @@ wheels/
 .installed.cfg
 *.egg
 
+
+# Mobile
+mobile_app
+
 # Virtual Environment
 .venv/
 venv/
@@ -27,6 +31,7 @@ ENV/
 env/
 
 # Test Files
+test*.py
 test_all_methods.py
 
 # Environment variables

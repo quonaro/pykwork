@@ -205,6 +205,11 @@ await client.delete_want(want_id=1)
 # Информация о бирже
 info = await client.get_exchange_info()
 
+# Коннекты (сколько осталось/всего)
+connects = await client.get_connects()
+print(f"Коннекты: {connects['active_connects']} из {connects['all_connects']}")
+# {'active_connects': 24, 'all_connects': 30, 'update_time': 1234567890}
+
 # Избранные категории
 fav_cats = await client.get_favorite_categories()
 

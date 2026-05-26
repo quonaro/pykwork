@@ -43,6 +43,11 @@ async def main():
             print(f"Type: {actor['response']['type']}")
             print()
 
+            # Get connects info (коннекты)
+            connects = await client.get_connects()
+            print(f"Коннекты: {connects['active_connects']} из {connects['all_connects']}")
+            print()
+
             # Get categories
             categories = await client.get_categories()
             print(f"Got {len(categories)} categories:")

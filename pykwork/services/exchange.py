@@ -103,3 +103,18 @@ class ExchangeService:
     async def get_wants_status_list(self) -> Dict[str, Any]:
         """Get wants status list"""
         return await self._request("/wantsStatusList", params={})
+
+    async def get_connects(self) -> Dict[str, Any]:
+        """Get connects info (active_connects, all_connects, update_time)
+
+        Returns:
+            Dict with keys: active_connects, all_connects, update_time
+            Example: {'active_connects': 24, 'all_connects': 30, 'update_time': 1234567890}
+        """
+        response = await self._request("/projects", params={"page": 1})
+        connects = response.get("connects", {})
+        return {
+            "active_connects": connects.get("active_connects", 0),
+            "all_connects": connects.get("all_connects", 0),
+            "update_time": connects.get("update_time", 0),
+        }

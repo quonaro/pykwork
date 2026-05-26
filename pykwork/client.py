@@ -262,6 +262,21 @@ class KworkClient(
         response = await self._request("/projects", params=params)
         return response.get("response", [])
 
+    async def get_connects(self) -> Dict[str, Any]:
+        """Get connects info (active_connects, all_connects, update_time)
+
+        Returns:
+            Dict with keys: active_connects, all_connects, update_time
+            Example: {'active_connects': 24, 'all_connects': 30, 'update_time': 1234567890}
+        """
+        response = await self._request("/projects", params={"page": 1})
+        connects = response.get("connects", {})
+        return {
+            "active_connects": connects.get("active_connects", 0),
+            "all_connects": connects.get("all_connects", 0),
+            "update_time": connects.get("update_time", 0),
+        }
+
     async def get_categories(self, category_type: int = 1) -> List[Dict[str, Any]]:
         """
         Get categories for filtering projects

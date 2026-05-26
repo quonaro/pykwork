@@ -42,6 +42,11 @@ def main():
             print(f"Type: {actor['response']['type']}")
             print()
 
+            # Get connects info (коннекты)
+            connects = client.get_connects()
+            print(f"Коннекты: {connects['active_connects']} из {connects['all_connects']}")
+            print()
+
             # Get categories
             categories = client.get_categories()
             print(f"Got {len(categories)} categories:")
