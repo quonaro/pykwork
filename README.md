@@ -2,7 +2,7 @@
 
 ![Python](https://img.shields.io/badge/python-3.8+-blue?style=flat-square&logo=python&logoColor=white)
 ![License](https://img.shields.io/badge/license-MIT-green?style=flat-square)
-![PyPI](https://img.shields.io/pypi/v/pykwork?color=blue&label=pypi&style=flat-square)
+![PyPI](https://img.shields.io/pypi/v/pykwork?color=blue&label=pypi&style=flat-square&cacheSeconds=60)
 ![Downloads](https://img.shields.io/pypi/dm/pykwork?color=green&label=downloads&style=flat-square)
 
 > **⚠️ Disclaimer:** Это неофициальная библиотека для работы с API Kwork. Она не аффилирована с компанией Kwork и не является официальным SDK. Используйте на свой риск.
