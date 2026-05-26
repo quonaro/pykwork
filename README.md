@@ -20,12 +20,11 @@ Python библиотека для работы с API Kwork (kwork.ru) с по�
 ## Установка
 
 ```bash
-# Через uv (рекомендуется)
-cd /path/to/pykwork
-uv run python example_async.py
+# Через PyPI (рекомендуется)
+pip install pykwork
 
-# Или через pip
-pip install -e /path/to/pykwork
+# Или через git+
+pip install git+https://github.com/quonaro/pykwork.git
 ```
 
 ## Зависимости
