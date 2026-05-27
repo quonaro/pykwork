@@ -62,6 +62,8 @@ class KworkClient(
         device: str = "test",
         timeout: int = 10,
         log_level: int = 30,  # WARNING
+        http_proxy: str | None = None,
+        https_proxy: str | None = None,
     ):
         """
         Initialize Kwork API client
@@ -73,12 +75,16 @@ class KworkClient(
             device: Device model
             timeout: Request timeout in seconds
             log_level: Logging level (default: WARNING)
+            http_proxy: HTTP proxy URL (e.g., 'http://proxy.example.com:8080')
+            https_proxy: HTTPS proxy URL (e.g., 'http://proxy.example.com:8080')
         """
         self.username = username
         self.password = password
         self.uad = uad
         self.device = device
         self.timeout = timeout
+        self.http_proxy = http_proxy
+        self.https_proxy = https_proxy
         self._token: Optional[str] = None
         self._client: Optional[httpx.AsyncClient] = None
 
@@ -361,7 +367,12 @@ class KworkClient(
 
     async def __aenter__(self):
         """Async context manager entry"""
-        self._client = httpx.AsyncClient(timeout=self.timeout)
+        proxies = {}
+        if self.http_proxy:
+            proxies["http://"] = self.http_proxy
+        if self.https_proxy:
+            proxies["https://"] = self.https_proxy
+        self._client = httpx.AsyncClient(timeout=self.timeout, proxies=proxies if proxies else None)
         return self
 
     async def __aexit__(self, exc_type, exc_val, exc_tb):
