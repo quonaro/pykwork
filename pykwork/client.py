@@ -372,7 +372,10 @@ class KworkClient(
             proxies["http://"] = self.http_proxy
         if self.https_proxy:
             proxies["https://"] = self.https_proxy
-        self._client = httpx.AsyncClient(timeout=self.timeout, proxies=proxies if proxies else None)
+        if proxies:
+            self._client = httpx.AsyncClient(timeout=self.timeout, proxies=proxies)
+        else:
+            self._client = httpx.AsyncClient(timeout=self.timeout)
         return self
 
     async def __aexit__(self, exc_type, exc_val, exc_tb):
