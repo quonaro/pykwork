@@ -264,6 +264,19 @@ class KworkSyncClient(
         response = self._request("/projects", params=params)
         return response.get("response", [])
 
+    def get_project(self, project_id: int) -> Dict[str, Any]:
+        """
+        Get project details by ID
+
+        Args:
+            project_id: Project ID
+
+        Returns:
+            Project details
+        """
+        params = {"id": project_id}
+        return self._request("/project", params=params)
+
     def get_connects(self) -> Dict[str, Any]:
         """Get connects info (active_connects, all_connects, update_time)
 

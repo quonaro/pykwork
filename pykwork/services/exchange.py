@@ -61,6 +61,18 @@ class ExchangeService:
         }
         return await self._request("/getWantsCount", params=params)
 
+    async def get_project(self, project_id: int) -> Dict[str, Any]:
+        """Get project details by ID
+
+        Args:
+            project_id: Project ID
+
+        Returns:
+            Project details
+        """
+        params = {"id": project_id}
+        return await self._request("/project", params=params)
+
     async def get_worker_projects(
         self,
         categories: str = "",
